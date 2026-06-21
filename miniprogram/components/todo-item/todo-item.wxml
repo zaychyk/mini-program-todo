@@ -1,0 +1,31 @@
+<!-- 待办条目组件 — 包含手势交互（左滑删除、右滑完成）、勾选、编辑 -->
+<view class="todo_item {{todo.completed ? 'completed' : ''}}">
+  <view class="todo_swipe">
+    <view class="todo_content"
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+      style="transform: translateX({{offsetX}}px);">
+      <!-- 勾选按钮 -->
+      <view class="todo_check" bindtap="onToggle">
+        <view class="check_box {{todo.completed ? 'checked' : ''}} priority_{{todo.priority}}">
+          <text wx:if="{{todo.completed}}" class="check_icon">✓</text>
+        </view>
+      </view>
+      <!-- 内容区域（点击编辑） -->
+      <view class="todo_info" bindtap="onEdit">
+        <view class="todo_title {{todo.completed ? 'line_through' : ''}}">{{todo.title}}</view>
+        <view class="todo_meta">
+          <view class="priority_tag priority_{{todo.priority}}">
+            {{todo.priority === 'high' ? '高' : todo.priority === 'medium' ? '中' : '低'}}
+          </view>
+          <text class="todo_date">{{todo.createdAt}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 删除按钮（滑动后显示） -->
+    <view class="todo_delete" bindtap="onDelete">
+      <text>删除</text>
+    </view>
+  </view>
+</view>

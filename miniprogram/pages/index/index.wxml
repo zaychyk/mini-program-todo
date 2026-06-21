@@ -1,0 +1,63 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+
+  <!-- 顶部统计卡片（stats-header 组件） -->
+  <stats-header stats="{{stats}}"></stats-header>
+
+  <!-- 搜索栏 -->
+  <view class="search_bar">
+    <view class="search_icon">🔍</view>
+    <input class="search_input" placeholder="搜索待办事项..." value="{{searchKeyword}}" bindinput="onSearch" />
+    <view class="search_clear" wx:if="{{searchKeyword}}" bindtap="onClearSearch">✕</view>
+  </view>
+
+  <!-- 优先级筛选（与状态筛选联动，再次点击取消） -->
+  <view class="priority_filter">
+    <text class="priority_filter_label">优先级</text>
+    <view class="priority_filter_item {{currentPriority === 'high' ? 'active priority_high' : ''}}" bindtap="onPriorityTap" data-priority="high">高</view>
+    <view class="priority_filter_item {{currentPriority === 'medium' ? 'active priority_medium' : ''}}" bindtap="onPriorityTap" data-priority="medium">中</view>
+    <view class="priority_filter_item {{currentPriority === 'low' ? 'active priority_low' : ''}}" bindtap="onPriorityTap" data-priority="low">低</view>
+  </view>
+
+  <!-- 状态筛选标签 -->
+  <view class="filter_bar">
+    <view class="filter_item {{currentFilter === 'all' ? 'active' : ''}}" bindtap="onFilter" data-filter="all">全部</view>
+    <view class="filter_item {{currentFilter === 'active' ? 'active' : ''}}" bindtap="onFilter" data-filter="active">进行中</view>
+    <view class="filter_item {{currentFilter === 'completed' ? 'active' : ''}}" bindtap="onFilter" data-filter="completed">已完成</view>
+    <view class="clear_btn" wx:if="{{stats.completed > 0}}" bindtap="onClearCompleted">清除已完成</view>
+  </view>
+
+  <!-- 待办列表（todo-item 组件） -->
+  <view class="todo_list">
+    <block wx:if="{{filteredTodos.length === 0}}">
+      <view class="empty_state">
+        <view class="empty_icon">🔍</view>
+        <view class="empty_text" wx:if="{{searchKeyword}}">没有找到包含"{{searchKeyword}}"的待办</view>
+        <view class="empty_text" wx:else>{{currentFilter === 'all' ? '还没有待办事项，点击下方按钮添加' : currentFilter === 'active' ? '没有进行中的待办' : '没有已完成的待办'}}</view>
+      </view>
+    </block>
+
+    <todo-item
+      wx:for="{{filteredTodos}}"
+      wx:key="_id"
+      todo="{{item}}"
+      bind:toggle="onItemToggle"
+      bind:edit="onItemEdit"
+      bind:delete="onItemDelete"
+      bind:completeswipe="onItemCompleteSwipe">
+    </todo-item>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab_btn" bindtap="showAddModal">+</view>
+
+  <!-- 添加/编辑弹窗（add-modal 组件） -->
+  <add-modal
+    id="addModal"
+    show="{{showModal}}"
+    bind:open="onModalOpen"
+    bind:close="onModalClose"
+    bind:confirm="onModalConfirm">
+  </add-modal>
+
+</view>

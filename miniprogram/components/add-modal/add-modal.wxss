@@ -1,0 +1,150 @@
+/* 弹窗组件样式 */
+.modal_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 30rpx 30rpx 0 0;
+  padding: 40rpx;
+  z-index: 201;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.modal.show {
+  transform: translateY(0);
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.modal_title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.modal_close {
+  font-size: 36rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.modal_body {
+  margin-bottom: 40rpx;
+}
+
+.form_group {
+  margin-bottom: 30rpx;
+}
+
+.form_label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.form_input {
+  width: 100%;
+  height: 88rpx;
+  border: 2rpx solid #E8E8E8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: #333;
+  box-sizing: border-box;
+  background: #FAFAFA;
+}
+
+.form_input:focus {
+  border-color: #4A90E2;
+  background: #fff;
+}
+
+.placeholder {
+  color: #CCC;
+}
+
+/* 优先级选择器 */
+.priority_selector {
+  display: flex;
+  gap: 20rpx;
+}
+
+.priority_option {
+  flex: 1;
+  height: 72rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 500;
+  border: 2rpx solid #E8E8E8;
+  color: #666;
+  background: #FAFAFA;
+}
+
+.priority_option.selected.priority_high {
+  background: #FDEDEC;
+  border-color: #E74C3C;
+  color: #E74C3C;
+}
+
+.priority_option.selected.priority_medium {
+  background: #FEF5E7;
+  border-color: #F39C12;
+  color: #F39C12;
+}
+
+.priority_option.selected.priority_low {
+  background: #E8F8F5;
+  border-color: #6BCB77;
+  color: #6BCB77;
+}
+
+/* 弹窗底部按钮 */
+.modal_footer {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn_cancel,
+.btn_confirm {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 88rpx;
+}
+
+.btn_cancel {
+  background: #F5F5F5;
+  color: #666;
+}
+
+.btn_confirm {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  color: #fff;
+}

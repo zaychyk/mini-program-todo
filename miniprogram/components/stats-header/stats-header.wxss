@@ -1,0 +1,48 @@
+/* 统计头部组件样式 */
+.header {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  padding: 50rpx 40rpx 40rpx;
+  border-radius: 0 0 30rpx 30rpx;
+  box-shadow: 0 8rpx 30rpx rgba(74, 144, 226, 0.3);
+}
+
+.header_title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 30rpx;
+}
+
+.header_stats {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+}
+
+.stat_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat_num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stat_num.active {
+  color: #FFD93D;
+}
+
+.stat_num.done {
+  color: #6BCB77;
+}
+
+.stat_label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 6rpx;
+}

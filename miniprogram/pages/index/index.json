@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "stats-header": "/components/stats-header/stats-header",
+    "add-modal": "/components/add-modal/add-modal",
+    "todo-item": "/components/todo-item/todo-item"
+  },
+  "navigationBarTitleText": "待办清单"
+}

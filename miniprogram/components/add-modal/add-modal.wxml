@@ -1,0 +1,28 @@
+<!-- 新增/编辑弹窗组件 — 自管理表单状态，向外抛出 confirm/close 事件 -->
+<!-- 遮罩层 -->
+<view class="modal_mask" wx:if="{{show}}" bindtap="hideModal" catchtouchmove="preventTouchMove"></view>
+<!-- 弹窗主体 -->
+<view class="modal {{show ? 'show' : ''}}">
+  <view class="modal_header">
+    <text class="modal_title">{{isEdit ? '编辑待办' : '新建待办'}}</text>
+    <view class="modal_close" bindtap="hideModal">✕</view>
+  </view>
+  <view class="modal_body">
+    <view class="form_group">
+      <text class="form_label">待办内容</text>
+      <input class="form_input" placeholder="请输入待办事项..." value="{{inputTitle}}" bindinput="onInput" bindconfirm="onConfirm" focus="{{show}}" placeholder-class="placeholder" />
+    </view>
+    <view class="form_group">
+      <text class="form_label">优先级</text>
+      <view class="priority_selector">
+        <view class="priority_option {{inputPriority === 'high' ? 'selected' : ''}} priority_high" bindtap="onSelectPriority" data-priority="high">高</view>
+        <view class="priority_option {{inputPriority === 'medium' ? 'selected' : ''}} priority_medium" bindtap="onSelectPriority" data-priority="medium">中</view>
+        <view class="priority_option {{inputPriority === 'low' ? 'selected' : ''}} priority_low" bindtap="onSelectPriority" data-priority="low">低</view>
+      </view>
+    </view>
+  </view>
+  <view class="modal_footer">
+    <button class="btn_cancel" bindtap="hideModal">取消</button>
+    <button class="btn_confirm" bindtap="onConfirm">确定</button>
+  </view>
+</view>

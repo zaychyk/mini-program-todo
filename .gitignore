@@ -1,0 +1,57 @@
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器配置
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js 依赖（云函数）
+cloudfunctions/*/node_modules/
+cloudfunctions/*/package-lock.json
+
+# npm 构建产物
+miniprogram_npm/
+
+# 微信开发者工具
+project.private.config.json
+
+# 临时文件
+*.log
+*.tmp
+*.temp
+~$*
+
+# 环境变量（如有）
+.env
+.env.local
+
+# 构建产物
+dist/
+build/
+
+# macOS 图标缓存
+Icon?
+
+# Windows 缩略图缓存
+ehthumbs.db
+
+# 项目文档（不纳入版本控制）
+移动终端程序设计结课论文要求.doc
+CLAUDE.md
+
+# 微信开发者工具配置
+project.config.json
+project.private.config.json
+uploadCloudFunction.sh
+
+*.doc
+*.docx
+CLAUDE.md
+
+# 论文相关文件
+结课论文*
+论文流程图*
